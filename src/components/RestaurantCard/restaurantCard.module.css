@@ -35,3 +35,7 @@
     margin: 15px;
     justify-content: space-between;
 }
+
+.likeColor {
+    color: #9356dc;
+}
