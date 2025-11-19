@@ -43,7 +43,7 @@ export default function Home() {
                                 title={restaurant.name}
                                 location={restaurant.location}
                                 slug={restaurant.slug}
-                                isNew={true}
+                                isNew={restaurant.isNew}
                             />
                         ))}
                     </div>
