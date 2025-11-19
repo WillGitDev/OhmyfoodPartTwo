@@ -42,6 +42,8 @@ export default function Home() {
                                 image={restaurant.image}
                                 title={restaurant.name}
                                 location={restaurant.location}
+                                slug={restaurant.slug}
+                                isNew={true}
                             />
                         ))}
                     </div>

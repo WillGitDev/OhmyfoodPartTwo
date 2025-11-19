@@ -3,36 +3,45 @@
 import Image from 'next/image';
 import styles from './restaurantCard.module.css';
 import { useState } from 'react';
+import Link from 'next/link';
 
-function RestaurantCard({ image, title, location }) {
-    const [like, setLike] = useState(false);
+function RestaurantCard({ image, title, location, slug, isNew = false }) {
+    const [islike, setIsLike] = useState(false);
 
     return (
-        <div className={styles.cardContainer}>
-            <div className={styles.imageContainer}>
-                <Image
-                    className={styles.image}
-                    src={image}
-                    alt="Une image d'un plat"
-                    fill
-                    sizes="100vw"
-                />
-            </div>
-            <div className={styles.contentCardContainer}>
-                <div className={styles.textContainer}>
-                    <h3 className={styles.titleCard}>{title}</h3>
-                    <p className={styles.locationCard}>{location}</p>
+        <Link href={`/restaurant/${slug}`}>
+            <div className={styles.cardContainer}>
+                <div className={styles.imageContainer}>
+                    <Image
+                        className={styles.image}
+                        src={image}
+                        alt="Une image d'un plat"
+                        fill
+                        sizes="100vw"
+                    />
+                    {isNew && <span className={styles.new}>Nouveau</span>}
                 </div>
-                <i
-                    className={
-                        like
-                            ? `fa-solid fa-heart ${styles.likeColor}`
-                            : 'fa-regular fa-heart'
-                    }
-                    onClick={() => setLike(!like)}
-                ></i>
+                <div className={styles.contentCardContainer}>
+                    <div className={styles.textContainer}>
+                        <h3 className={styles.titleCard}>{title}</h3>
+                        <p className={styles.locationCard}>{location}</p>
+                    </div>
+                    <i
+                        className={
+                            islike
+                                ? `fa-solid fa-heart ${styles.likeColor}`
+                                : 'fa-regular fa-heart'
+                        }
+                        onClick={() => setIsLike(!islike)}
+                        aria-label={
+                            islike
+                                ? 'Retirer des favoris'
+                                : 'Ajouter aux favoris'
+                        }
+                    ></i>
+                </div>
             </div>
-        </div>
+        </Link>
     );
 }
 

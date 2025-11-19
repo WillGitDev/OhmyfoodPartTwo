@@ -39,3 +39,14 @@
 .likeColor {
     color: #9356dc;
 }
+
+.new {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: #99e2d0;
+    color: #008766;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 2px;
+}
