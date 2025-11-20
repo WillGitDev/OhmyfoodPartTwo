@@ -32,7 +32,11 @@ function RestaurantCard({ image, title, location, slug, isNew = false }) {
                                 ? `fa-solid fa-heart ${styles.likeColor}`
                                 : 'fa-regular fa-heart'
                         }
-                        onClick={() => setIsLike(!islike)}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setIsLike(!islike);
+                        }}
                         aria-label={
                             islike
                                 ? 'Retirer des favoris'
